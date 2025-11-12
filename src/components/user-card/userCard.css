@@ -1,0 +1,7 @@
+.wrapper .card {
+    transition: transform .3s;
+}
+
+.wrapper:has(.button-x:hover).card{
+    transform: translateY(-20px);
+}
