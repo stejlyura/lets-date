@@ -1,60 +1,52 @@
-import {type UserType } from "@/types/type-user"
-import './userCard.css'
+import { type UserType } from "@/types/type-user";
+import "./userCard.css";
 
-export const UserCard: React.FC<UserType> = ({fname, age, mainImg}) => {
+export const UserCard: React.FC<UserType> = ({ fname, age, mainImg }) => {
   return (
-    <div className="inline-block wrapper">
-      <div className="card w-2xs flex content-center items-center flex-col border-2 border-solid border-black rounded-[27px] overflow-hidden
-        ">
-        <img src={mainImg} alt={fname} className="w-full object-cover"/>
-        <div className="w-full flex items-center content-center justify-around">
-          <h3>{fname}</h3>
-          <h2>{age}</h2>
+    <section className="user-card">
+      <article className="user-card__inner">
+        <figure className="user-card__media">
+          <img
+            src={mainImg}
+            alt={`${fname}'s profile`}
+            loading="lazy"
+            className="user-card__photo"
+          />
+          <figcaption className="user-card__identity">
+            <h3>{fname}</h3>
+            <span>{age}</span>
+          </figcaption>
+        </figure>
+
+        <div className="user-card__meta">
+          <span className="user-card__status">Active now</span>
+          <span className="user-card__distance">2 km away</span>
         </div>
-      </div>
-      <div className="buttons flex justify-between pt-4" >
-        <button className="
-              button-x
-              w-[60px]
-              h-[60px]
-              rounded-full 
-              border-4 
-              border-solid 
-              border-red-600 
-              bg-white 
-              text-red-600
-              transform
-              origin-center
-              transition
-              hover:scale-110
-            "
-          >X</button>
-          <button className="
-                  button-s
-                  w-[60px] 
-                  h-[60px]
-                  rounded-full 
-                  border-none
-                  bg-[#6e6e6e] 
-                  text-white
-                  transform transition
-                  hover:scale-110
-            "
-          >Skip</button>
-          <button className="
-              button-l
-              w-[60px] 
-              h-[60px]
-              rounded-full 
-              border-none
-              bg-[#fc3da0] 
-              text-white
-              transform 
-              transition
-              hover:scale-110
-            "
-          >Like</button>
-      </div>
-    </div>
-  )
-}
+
+        <div className="user-card__actions">
+          <button
+            type="button"
+            className="action action--nope"
+            aria-label="Dismiss profile"
+          >
+            ✕
+          </button>
+          <button
+            type="button"
+            className="action action--skip"
+            aria-label="Skip for now"
+          >
+            Skip
+          </button>
+          <button
+            type="button"
+            className="action action--like"
+            aria-label="Like profile"
+          >
+            ♥
+          </button>
+        </div>
+      </article>
+    </section>
+  );
+};
