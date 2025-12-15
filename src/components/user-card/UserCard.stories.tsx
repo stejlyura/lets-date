@@ -28,8 +28,8 @@ const defaultUser = demoUsers[0] ?? fallbackUser;
 const CardDeckPreview = () => {
   const [index, setIndex] = useState(0);
   const [stageState, setStageState] = useState<CardAction | "enter" | null>(null);
-  const hideTimerRef = useRef<number>();
-  const enterTimerRef = useRef<number>();
+  const hideTimerRef = useRef<number>(0);
+  const enterTimerRef = useRef<number>(0);
 
   const triggerAction = useCallback((type: CardAction) => {
     if (hideTimerRef.current || enterTimerRef.current) {
@@ -43,14 +43,14 @@ const CardDeckPreview = () => {
 
       if (hideTimerRef.current) {
         window.clearTimeout(hideTimerRef.current);
-        hideTimerRef.current = undefined;
+        hideTimerRef.current = 0;
       }
 
       enterTimerRef.current = window.setTimeout(() => {
         setStageState(null);
         if (enterTimerRef.current) {
           window.clearTimeout(enterTimerRef.current);
-          enterTimerRef.current = undefined;
+          enterTimerRef.current = 0;
         }
       }, ENTER_ANIMATION_MS);
     }, ANIMATION_MS);
