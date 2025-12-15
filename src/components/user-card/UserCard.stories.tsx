@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { UserCard } from "./UserCard";
-import Tana from '@/assets/img/Tana.jpg'
+import Anna from '@/assets/img/Anna.webp'
 
 const meta: Meta<typeof UserCard> = {
   title: "User/UserCard",
@@ -13,8 +13,8 @@ type Story = StoryObj<typeof UserCard>;
 
 export const Default: Story = {
   args: {
-    fname: "Tana",
+    fname: "Anna",
     age: 24,
-    mainImg: Tana,
+    mainImg: Anna,
   },
 };
