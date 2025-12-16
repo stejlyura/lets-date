@@ -64,21 +64,32 @@ export const UserPicker = () => {
 
   if (!currentProfile) {
     return (
-      <main className="usr-card-deck">
+      <main className="mx-auto w-full max-w-[420px] px-4 py-6 text-center text-white/80">
         <p>No profiles available.</p>
       </main>
     );
   }
 
-  const stageClassNames = ["user-card-deck__stage"];
-  if (stageState) {
-    stageClassNames.push(`user-card-deck__stage--${stageState}`);
-  }
+  const stageBaseClass =
+    "relative mx-auto min-h-[560px] w-full max-w-[420px]";
+  const cardStateClass =
+    stageState === "like"
+      ? "-translate-y-[18px]"
+      : stageState === "nope"
+        ? "translate-y-[26px] scale-[0.92] opacity-0"
+        : stageState === "skip"
+          ? "scale-[0.8] opacity-0"
+          : "";
 
   return (
-    <main className="user-card-deck w-full h-full" >
-      <div className={stageClassNames.join(" ")}>
-        <div className="user-card-deck__card" key={currentProfile.data_id}>
+    <main className="mx-auto w-full max-w-[420px] px-4 py-6">
+      <div className={stageBaseClass}>
+        <div
+          className={`absolute inset-0 transition-[transform,opacity] duration-300 ease-out will-change-[transform,opacity] ${
+            stageState === "enter" ? "animate-card-deck-enter" : cardStateClass
+          }`}
+          key={currentProfile.data_id}
+        >
           <UserCard
             fname={currentProfile.fname}
             age={currentProfile.age}

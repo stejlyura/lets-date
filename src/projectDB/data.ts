@@ -1,7 +1,6 @@
 import type { userData } from "../types/type-user";
 
-//import Aiwa from '@./assets/img/Aiwa.webp'
-//import Alice from '@./assets/img/Alice.jpg'
+import Alice from '@/assets/img/Alice.jpg'
 import Alla from '@/assets/img/Alla.jpg'
 import Anfa from '@/assets/img/Anfa.jpg'
 import Angel from '@/assets/img/Angel.jpg'
@@ -22,13 +21,17 @@ import Ryta from '@/assets/img/Ryta.jpeg'
 import Sophie from '@/assets/img/Sophie.jpg'
 import Tanya from '@/assets/img/Tanya.jpg'
 
+import Eliza from '@/assets/img/Eliza.webp'
+import Hanna from '@/assets/img/Hanna.webp'
+import Selti from '@/assets/img/Selti.webp'
+
 export const projectBD: userData[] = [
     {data_id: 1, fname: 'Anna', age: 20, isLike: true, mainImg: Anna, isActive: true, range: 20},
     {data_id: 2, fname: 'Alla', age: 26, isLike: true, mainImg: Alla, isActive: true, range: 220},
     {data_id: 3, fname: 'Anfa', age: 22, isLike: true, mainImg: Anfa, isActive: false, range: 54},
     {data_id: 4, fname: 'Lee', age: 20, isLike: true, mainImg: Lee, isActive: true, range: 1109},
-    //{data_id: 5, fname: 'Aiwa', age: 26, isLike: false, mainImg: Aiwa, isActive: true, range: 453},
-    //{data_id: 6, fname: 'Alice', age: 21, isLike: true, mainImg: Alice, isActive: true, range: 33},
+    {data_id: 5, fname: 'Eliza', age: 22, isLike: false, mainImg: Eliza , isActive: true, range: 453},
+    {data_id: 6, fname: 'Alice', age: 21, isLike: true, mainImg: Alice, isActive: true, range: 33},
     {data_id: 7, fname: 'Angel', age: 19, isLike: true, mainImg: Angel, isActive: false, range: 514},
     {data_id: 8, fname: 'Nora', age: 19, isLike: true, mainImg: Nora, isActive: true, range: 514},
     {data_id: 9, fname: 'Tanya', age: 25, isLike: true, mainImg: Tanya, isActive: true, range: 291}, 
@@ -44,5 +47,7 @@ export const projectBD: userData[] = [
     {data_id: 19, fname: 'Isabella', age: 27, isLike: true, mainImg: Isabella, isActive: false, range: 66},
     {data_id: 20, fname: 'Nata', age: 25, isLike: true, mainImg: Nata, isActive: false, range: 59},
     {data_id: 21, fname: 'Rara', age: 45, isLike: true, mainImg: Rara, isActive: false, range: 91},
+    {data_id: 22, fname: 'Hanna', age: 20, isLike: true, mainImg: Hanna, isActive: false, range: 52},
+    {data_id: 23, fname: 'Selti', age: 24, isLike: true, mainImg: Selti, isActive: false, range: 52},
 
 ]
