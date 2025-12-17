@@ -58,7 +58,7 @@ export const UserCard = ({
     };
 
   return (
-    <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 mx-auto">
+    <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 pb-6 mx-auto">
       <article
         className={`flex flex-col gap-4 rounded-[32px] bg-gradient-to-b from-[#1b1b1f] to-[#0e0f12] shadow-[0_25px_45px_rgba(9,9,14,0.35)] p-4 sm:p-5 transition duration-300 ease-out will-change-transform ${interactionTilt}`}
         onMouseLeave={handleHover(null)}

@@ -64,7 +64,7 @@ export const UserPicker = () => {
 
   if (!currentProfile) {
     return (
-      <main className="mx-auto w-full max-w-[420px] px-4 py-6 text-center text-white/80">
+      <main className="mx-auto w-full max-w-[420px] h-full px-4 py-6 text-center text-white/80">
         <p>No profiles available.</p>
       </main>
     );
@@ -82,7 +82,7 @@ export const UserPicker = () => {
           : "";
 
   return (
-    <main className="mx-auto w-full max-w-[420px] px-4 py-6">
+    <main className="mx-auto w-full max-w-[420px] h-full px-4 py-6">
       <div className={stageBaseClass}>
         <div
           className={`absolute inset-0 transition-[transform,opacity] duration-300 ease-out will-change-[transform,opacity] ${
