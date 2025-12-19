@@ -1,5 +1,5 @@
 import { useState, type MouseEventHandler } from "react";
-
+import { ModalWindow } from "../layout/modal/ModalWindow";
 import { type userData } from "@/types/type-user";
 
 type HoveredAction = "like" | "nope" | "skip" | null;
@@ -56,14 +56,17 @@ export const UserCard = ({
     () => {
       setHoveredAction(action);
     };
-
+  
+  const [open, setOpen] = useState(false)
   return (
     <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 pb-6 mx-auto">
       <article
         className={`flex flex-col gap-4 rounded-[32px] bg-gradient-to-b from-[#1b1b1f] to-[#0e0f12] shadow-[0_25px_45px_rgba(9,9,14,0.35)] p-4 sm:p-5 transition duration-300 ease-out will-change-transform ${interactionTilt}`}
         onMouseLeave={handleHover(null)}
       >
-        <figure className="relative overflow-hidden rounded-[24px] bg-[#1f2127] aspect-[4/5]">
+        <figure className="relative overflow-hidden rounded-[24px] bg-[#1f2127] aspect-[4/5]"
+          onClick={() => setOpen(true)}
+        >
           <img
             src={mainImg}
             alt={`${fname}'s profile`}
