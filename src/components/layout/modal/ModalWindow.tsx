@@ -1,4 +1,4 @@
-import { useEffect, type PropsWithChildren } from "react"
+import { useEffect, type MouseEventHandler, type PropsWithChildren } from "react"
 import { createPortal } from "react-dom"
 
 type ModalWindowProps = PropsWithChildren<{
@@ -28,10 +28,21 @@ export const ModalWindow = ({ children, open = false, onClose }: ModalWindowProp
         return null
     }
 
+    const handleBackdropClick: MouseEventHandler<HTMLDialogElement> = (event) => {
+        if (event.target === event.currentTarget) {
+            onClose?.()
+        }
+    }
+
     return createPortal(
         <dialog
             open={open}
             onClose={onClose}
+            onCancel={(event) => {
+                event.preventDefault()
+                onClose?.()
+            }}
+            onClick={handleBackdropClick}
             className="fixed inset-0 z-50 m-0 flex h-screen w-screen items-start justify-center bg-black/80 p-6"
         >
             {children}
