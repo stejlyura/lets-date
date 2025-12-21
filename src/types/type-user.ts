@@ -1,3 +1,14 @@
+export type userInfo = {
+    ocupation: string;
+    isSmoking: boolean;
+    isDrinking: boolean;
+    aboutMe: string;
+    isDogs: boolean;
+    isCats: boolean;
+    hobbies: string[];
+
+}
+
 
 export type userData = {
     data_id: number;
@@ -6,5 +17,6 @@ export type userData = {
     isLike: boolean;
     mainImg: string;
     isActive: boolean;
-    range: number
+    range: number;
+    additionalInfo: userInfo;
 }

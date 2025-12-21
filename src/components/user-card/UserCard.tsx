@@ -1,13 +1,15 @@
 import { useState, type MouseEventHandler } from "react";
-
+import { ModalWindow } from "../layout/modal/ModalWindow";
 import { type userData } from "@/types/type-user";
+import { projectBD } from "@/projectDB/data";
+import { UserAbout } from "../layout/userAbout/userAbout";
 
 type HoveredAction = "like" | "nope" | "skip" | null;
 
 type UserCardActionHandler = MouseEventHandler<HTMLButtonElement>;
 export type UserCardProps = Pick<
   userData,
-  "fname" | "age" | "mainImg" | "isActive" | "range"
+  "data_id" | "fname" | "age" | "mainImg" | "isActive" | "range"
 > & {
   onLike?: UserCardActionHandler;
   onNope?: UserCardActionHandler;
@@ -15,6 +17,7 @@ export type UserCardProps = Pick<
 };
 
 export const UserCard = ({
+  data_id,
   fname,
   age,
   mainImg,
@@ -56,14 +59,22 @@ export const UserCard = ({
     () => {
       setHoveredAction(action);
     };
-
+  
+  const [openUserId, setOpenUserId] = useState<number | null>(null);
+  const handleCloseModal = () => setOpenUserId(null);
+  const openUser = openUserId === null
+    ? null
+    : projectBD.find((user) => user.data_id === openUserId) ?? null;
   return (
-    <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 mx-auto">
+    <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 pb-6 mx-auto">
       <article
         className={`flex flex-col gap-4 rounded-[32px] bg-gradient-to-b from-[#1b1b1f] to-[#0e0f12] shadow-[0_25px_45px_rgba(9,9,14,0.35)] p-4 sm:p-5 transition duration-300 ease-out will-change-transform ${interactionTilt}`}
         onMouseLeave={handleHover(null)}
       >
-        <figure className="relative overflow-hidden rounded-[24px] bg-[#1f2127] aspect-[4/5]">
+        <figure
+          className="relative overflow-hidden rounded-[24px] bg-[#1f2127] aspect-[4/5]"
+          onClick={() => setOpenUserId(data_id)}
+        >
           <img
             src={mainImg}
             alt={`${fname}'s profile`}
@@ -123,6 +134,38 @@ export const UserCard = ({
           </button>
         </div>
       </article>
+      <ModalWindow open={openUserId === data_id} onClose={handleCloseModal}>
+        <div
+          data-user-id={openUserId ?? undefined}
+          className="w-full max-w-[1020px] h-full rounded-[24px] bg-white p-6"
+        >
+          {openUser ? (
+            <>
+              <h1>
+                {openUser.data_id}
+              </h1>
+              <h2>
+                {openUser.fname}
+              </h2>
+              <UserAbout
+                mainImg={openUser.mainImg}
+                fname={openUser.fname}
+                age={openUser.age}
+                isActive={openUser.isActive}
+                ocupation={openUser.additionalInfo.ocupation}
+                isSmoking={openUser.additionalInfo.isSmoking}
+                isDrinking={openUser.additionalInfo.isDrinking}
+                aboutMe={openUser.additionalInfo.aboutMe}
+                isDogs={openUser.additionalInfo.isDogs}
+                isCats={openUser.additionalInfo.isCats}
+                hobbies={openUser.additionalInfo.hobbies}
+              />
+            </>
+          ) : (
+            <p className="text-sm text-[#3a3a42]">User not found.</p>
+          )}
+        </div>
+      </ModalWindow>
     </section>
   );
 };
