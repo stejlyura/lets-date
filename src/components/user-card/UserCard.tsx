@@ -1,6 +1,8 @@
 import { useState, type MouseEventHandler } from "react";
 import { ModalWindow } from "../layout/modal/ModalWindow";
 import { type userData } from "@/types/type-user";
+import { projectBD } from "@/projectDB/data";
+import { UserAbout } from "../layout/userAbout/userAbout";
 
 type HoveredAction = "like" | "nope" | "skip" | null;
 
@@ -60,6 +62,9 @@ export const UserCard = ({
   
   const [openUserId, setOpenUserId] = useState<number | null>(null);
   const handleCloseModal = () => setOpenUserId(null);
+  const openUser = openUserId === null
+    ? null
+    : projectBD.find((user) => user.data_id === openUserId) ?? null;
   return (
     <section className="w-full max-w-[360px] sm:max-w-[420px] px-4 sm:px-0 pb-6 mx-auto">
       <article
@@ -132,9 +137,33 @@ export const UserCard = ({
       <ModalWindow open={openUserId === data_id} onClose={handleCloseModal}>
         <div
           data-user-id={openUserId ?? undefined}
-          className="w-full max-w-[520px] rounded-[24px] bg-white p-6"
+          className="w-full max-w-[1020px] h-full rounded-[24px] bg-white p-6"
         >
-          <h1 className="text-2xl font-semibold text-[#1b1b1f]">{fname}</h1>
+          {openUser ? (
+            <>
+              <h1>
+                {openUser.data_id}
+              </h1>
+              <h2>
+                {openUser.fname}
+              </h2>
+              <UserAbout
+                mainImg={openUser.mainImg}
+                fname={openUser.fname}
+                age={openUser.age}
+                isActive={openUser.isActive}
+                ocupation={openUser.additionalInfo.ocupation}
+                isSmoking={openUser.additionalInfo.isSmoking}
+                isDrinking={openUser.additionalInfo.isDrinking}
+                aboutMe={openUser.additionalInfo.aboutMe}
+                isDogs={openUser.additionalInfo.isDogs}
+                isCats={openUser.additionalInfo.isCats}
+                hobbies={openUser.additionalInfo.hobbies}
+              />
+            </>
+          ) : (
+            <p className="text-sm text-[#3a3a42]">User not found.</p>
+          )}
         </div>
       </ModalWindow>
     </section>

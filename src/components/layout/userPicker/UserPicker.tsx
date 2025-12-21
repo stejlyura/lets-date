@@ -91,6 +91,7 @@ export const UserPicker = () => {
           key={currentProfile.data_id}
         >
           <UserCard
+            data_id={currentProfile.data_id}
             fname={currentProfile.fname}
             age={currentProfile.age}
             mainImg={currentProfile.mainImg}

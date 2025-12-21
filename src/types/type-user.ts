@@ -18,5 +18,5 @@ export type userData = {
     mainImg: string;
     isActive: boolean;
     range: number;
-    additionalInfo?: userInfo;
+    additionalInfo: userInfo;
 }
