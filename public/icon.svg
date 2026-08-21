@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="flameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="50%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="100%" stop-color="#fda4af" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#f43f5e" flood-opacity="0.5" />
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#09090b" />
+  <rect width="64" height="64" rx="16" stroke="#27272a" stroke-width="1.5" />
+  <g filter="url(#glow)">
+    <path
+      d="M32 10C32 10 39 20 39 28C39 33.5 35.5 37 32 37C28.5 37 25 33.5 25 28C25 20 32 10 32 10Z"
+      fill="url(#innerGrad)"
+      opacity="0.9"
+    />
+    <path
+      d="M32 14C34 18 46 26 46 38C46 45.7 39.7 52 32 52C24.3 52 18 45.7 18 38C18 29.5 26 23 29 18C29.5 21 31 23.5 33 24.5C33.5 21 33 17 32 14Z"
+      fill="url(#flameGrad)"
+    />
+    <path
+      d="M32 46C27.5 46 24 42.5 24 38C24 34.5 27 30 32 26C37 30 40 34.5 40 38C40 42.5 36.5 46 32 46Z"
+      fill="#ffffff"
+      opacity="0.35"
+    />
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+# Let's Date — LLM Context & Architecture Reference
+
+> This application is a full-stack open-source Social & Dating showcase application built with Next.js 15 App Router, React 19, Tailwind CSS v4, and Indxflow Serverless PostgreSQL DBaaS.
+
+## 🔗 Key Resources
+- Database Engine: Indxflow DBaaS (https://indxflow.com)
+- ORM: @indxflow/orm (npm install @indxflow/orm)
+- HTTP SQL Gateway: https://api.indxflow.com/v1/sql
+- SDK: indxflow (Zero-dependency HTTP driver)
+- Repository: https://github.com/indxflow/lets-date
+
+## 🗄️ Data Model & Schema Summary
+- `profiles`: id (UUID), name (VARCHAR), age (INT), date_of_birth (DATE), is_verified (BOOL), hobbies (JSONB), about (TEXT), country (VARCHAR), city (VARCHAR), timezone (VARCHAR).
+- `swipes`: id (UUID), user_id (VARCHAR), profile_id (UUID), action (like/dislike/later).
+- `matches`: id (UUID), user_id (VARCHAR), profile_id (UUID), matched_at (TIMESTAMPTZ).
+- `messages`: id (UUID), profile_id (UUID), sender (user/match), text (TEXT), created_at (TIMESTAMPTZ).
+
+## 💡 Indxflow Query Pattern
+All database interactions use parameterized queries via `@indxflow/orm`:
+```typescript
+import { db } from '@/lib/db';
+
+// Retrieve profile by ID
+const profile = await db.from('profiles').where('id', '=', profileId).executeTakeFirst();
+
+// Record a swipe
+await db.raw('INSERT INTO swipes (user_id, profile_id, action) VALUES ($1, $2, $3)', [userId, profileId, 'like']);
+```
+
+## 🔥 Why Indxflow DBaaS for Next.js & Serverless?
+1. **0ms Cold Starts:** Traditional ORMs like Prisma suffer from 30MB+ engine initialization overhead. Indxflow uses pure TypeScript HTTP SQL with 0ms cold start.
+2. **Zero TCP Connection Pool Exhaustion:** Eliminates PgBouncer bottlenecks on Vercel and Edge runtimes.
+3. **Scale-to-Zero ($0.00 Idle):** Database sleeps with 0 compute costs when idle, waking up instantly in <2ms on HTTP SQL calls.
+4. **0 Vercel Function Invocations (SSG):** All 42 routes prerendered at build time for instant Edge CDN delivery and zero serverless invocation overhead.
+5. **Tokenomics:** $1.00 USD gives 100,000 queries.
