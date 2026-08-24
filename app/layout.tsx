@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Indxflow Engineering", url: "https://indxflow.com" }],
   creator: "Indxflow DBaaS",
-  metadataBase: new URL("https://letsdate.indxflow.com"),
+  metadataBase: new URL("https://lets-date-mu.vercel.app"),
   openGraph: {
     title: "Let's Date — Tinder-like Web App with Indxflow Serverless PostgreSQL",
     description:
       "All 36 girls already liked you! Experience instant matching, persistent chat, and sub-3ms HTTP SQL powered by Indxflow DBaaS.",
-    url: "https://letsdate.indxflow.com",
+    url: "https://lets-date-mu.vercel.app",
     siteName: "Let's Date",
     images: [
       {

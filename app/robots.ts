@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://letsdate.indxflow.com/sitemap.xml',
+    sitemap: 'https://lets-date-mu.vercel.app/sitemap.xml',
   };
 }

@@ -107,7 +107,7 @@ export default async function UserProfilePage({ params }: PageProps) {
         addressCountry: profile.Country,
       },
       description: profile.about,
-      image: `https://letsdate.indxflow.com${profile.photoUrl}`,
+      image: `https://lets-date-mu.vercel.app${profile.photoUrl}`,
       knowsAbout: profile.hobbies.map((h) => h.name),
     },
     provider: {

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { PROFILES } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://letsdate.indxflow.com';
+  const baseUrl = 'https://lets-date-mu.vercel.app';
 
   const profileUrls: MetadataRoute.Sitemap = PROFILES.map((p) => ({
     url: `${baseUrl}/user/${p.id}`,
