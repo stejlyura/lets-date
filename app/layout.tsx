@@ -47,13 +47,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    noimageindex: true,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: true,
       "max-video-preview": -1,
-      "max-image-preview": "large",
+      "max-image-preview": "none",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "PJ7Ztl_fGi3PIw-gpHMHSSD6KFN4HRob45A_C_yafTc",
   },
 };
 
@@ -87,6 +92,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#09090b" />
+        <meta name="google-site-verification" content="PJ7Ztl_fGi3PIw-gpHMHSSD6KFN4HRob45A_C_yafTc" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
